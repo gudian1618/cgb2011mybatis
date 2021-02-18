@@ -4,5 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="EmpMapper">
+<!--不同的mapper文件对应的namespace值应该保证唯一-->
+<!--    通过select,update,insert,delete标签声明只要执行的SQL语句-->
+<!--    练习1:查询emp表中的所有员工信息id用于指定一个唯一的编号,要求id值在当前文件中不能重复,
+resultType用于指定一个类型,用该类型封装sql语句查询的结果
+即使最终返回的是集合,也只需要指定集合中的泛型即可-->
+    <select id="findAll" resultType="com.github.gudian1618.cgb2011mybatis.pojo.Emp">
+        select * from emp
+    </select>
 
 </mapper>
