@@ -3,6 +3,7 @@ package com.github.gudian1618.cgb2011mybatis.dao;
 import com.github.gudian1618.cgb2011mybatis.pojo.Emp;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author gudian1618
@@ -20,4 +21,18 @@ public interface EmpMapper {
      */
     public List<Emp> findAll();
 
+    /**
+     * 新增
+     */
+    public int insert(Emp emp);
+
+    /**
+     * 修改
+     */
+    public int update(Map map);
+
+    /**
+     * 删除
+     */
+    public int deleteById(Integer id);
 }

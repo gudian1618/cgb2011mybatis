@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class TestMybatis03 {
 
     // ==============mapper接口开发=================
 
+    // 查询
     @Test
     public void testFindAll() {
         // 1.获取EmpMapper接口的子类对象/实例
@@ -53,6 +55,47 @@ public class TestMybatis03 {
         // findAll方法底层如何实现:findAll方法底层会根据 [接口的全限定类名+当前方法的名字] 找到要执行的SQl语句,执行SQL语句,返回执行的结构即可
         List<Emp> list = mapper.findAll();
 
+        for (Emp emp : list) {
+            System.out.println(emp);
+        }
     }
 
+    // 新增
+    @Test
+    public void testInsert() {
+        Emp emp = new Emp();
+        emp.setName("赵云");
+        emp.setJob("保安");
+        emp.setSalary(9000.0);
+
+        // 获取EmpMapper接口的子类实例
+        EmpMapper mapper = session.getMapper(EmpMapper.class);
+        int rows = mapper.insert(emp);
+        System.out.println("影响行数:" + rows);
+    }
+
+    // 修改
+    @Test
+    public void testUpdate() {
+        // 将SQL语句中的参数值封装到Map集合中
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", "赵云");
+        map.put("job", "保镖");
+        map.put("salary", 29000.0);
+
+        // 获取EmpMapper接口的子类实例
+        EmpMapper mapper = session.getMapper(EmpMapper.class);
+        int rows = mapper.update(map);
+        System.out.println(rows);
+    }
+
+    // 删除
+    @Test
+    public void testDeleteById() {
+        // 获取EmpMapper接口的子类实例
+        EmpMapper mapper = session.getMapper(EmpMapper.class);
+        int rows = mapper.deleteById(10);
+        System.out.println(rows);
+
+    }
 }

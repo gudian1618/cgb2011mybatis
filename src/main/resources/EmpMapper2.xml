@@ -15,4 +15,16 @@ resultType用于指定一个类型,用该类型封装sql语句查询的结果
         select * from emp
     </select>
 
+    <insert id="insert">
+        insert into emp value(null, #{name}, #{job}, #{salary})
+    </insert>
+
+    <update id="update">
+        update emp set job=#{job}, salary=#{salary} where name=#{name}
+    </update>
+
+    <delete id="deleteById">
+        delete from emp where id=#{id}
+    </delete>
+
 </mapper>
