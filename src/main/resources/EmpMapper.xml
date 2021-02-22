@@ -33,4 +33,10 @@ resultType用于指定一个类型,用该类型封装sql语句查询的结果
         select * from emp where id=#{id}
     </select>
 
+    <!--练习6:新增员工信息:张飞java开发工程师15000-->
+    <update id="insert2">
+        insert into emp value(null, #{name},#{job},#{salary});
+
+    </update>
+
 </mapper>

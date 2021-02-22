@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author gudian1618
@@ -74,6 +76,20 @@ public class TestMybatis02 {
         Emp emp = session.selectOne("EmpMapper.findById", id);
         System.out.println(emp);
 
+    }
+
+    /**
+     * 练习6:新增员工信息:张飞java开发工程师15000
+     */
+    @Test
+    public void testInsert2() {
+        // 将SQL语句中的参数值封装到一个map集合中
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "张飞");
+        map.put("job", "Java开发工程师");
+        map.put("salary", 15000);
+
+        session.update("EmpMapper.insert2", map);
     }
 
 }
