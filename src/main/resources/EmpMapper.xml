@@ -34,9 +34,20 @@ resultType用于指定一个类型,用该类型封装sql语句查询的结果
     </select>
 
     <!--练习6:新增员工信息:张飞java开发工程师15000-->
+    <!--如果传过来的参数是用map,替换占位符,执行插入操作-->
     <update id="insert2">
-        insert into emp value(null, #{name},#{job},#{salary});
-
+        insert into emp value(null,#{name},#{job},#{salary});
     </update>
+
+    <!--如果传来的参数是用Emp对象封装的,将会通过占位符中的名称拼接出-->
+    <!--对应的get方法,获取emp中的对应的属性值-->
+    <update id="insert3">
+        insert into emp value(null,#{name},#{job},#{salary});
+    </update>
+
+    <!--删除-->
+    <delete id="delete2" parameterType="String">
+        delete from emp where id=#{id}
+    </delete>
 
 </mapper>

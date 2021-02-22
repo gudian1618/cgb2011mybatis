@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,7 +90,33 @@ public class TestMybatis02 {
         map.put("job", "Java开发工程师");
         map.put("salary", 15000);
 
-        session.update("EmpMapper.insert2", map);
+        int rows = session.update("EmpMapper.insert2", map);
+        System.out.println("影响行数:" + rows);
+    }
+
+    /**
+     * 练习6:新增员工信息:张飞java开发工程师15000
+     */
+    @Test
+    public void testInsert3() {
+        // 将SQL语句中的参数值封装到一个POJO对象中
+        Emp emp = new Emp();
+        emp.setName("关羽");
+        emp.setJob("保安");
+        emp.setSalary(8000.0);
+
+        int rows = session.update("EmpMapper.insert3", emp);
+        System.out.println("影响行数:" + rows);
+    }
+
+    /**
+     * 删除
+     */
+    @Test
+    public void testDelete2() throws IOException {
+        int rows = session.delete("EmpMapper.delete2", 1);
+        session.commit();
+        System.out.println("影响行数:" + rows);
     }
 
 }
