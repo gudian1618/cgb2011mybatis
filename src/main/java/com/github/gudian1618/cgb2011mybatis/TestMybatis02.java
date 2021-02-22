@@ -1,5 +1,6 @@
 package com.github.gudian1618.cgb2011mybatis;
 
+import com.github.gudian1618.cgb2011mybatis.pojo.Emp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -61,6 +62,18 @@ public class TestMybatis02 {
         // 执行sql语句,返回执行结果
         int rows = session.delete("EmpMapper.delete");
         System.out.println("影响的行数:" + rows);
+    }
+
+    /**
+     * 练习5:查询制定id的员工信息
+     */
+    @Test
+    public void testFindById() {
+        // 执行SQL语句,返回执行结果
+        Integer id = 1;
+        Emp emp = session.selectOne("EmpMapper.findById", id);
+        System.out.println(emp);
+
     }
 
 }

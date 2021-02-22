@@ -28,4 +28,9 @@ resultType用于指定一个类型,用该类型封装sql语句查询的结果
         delete from emp where name ='刘德华'
     </delete>
 
+    <!--练习5:查询制定id的员工信息-->
+    <select id="findById" resultType="com.github.gudian1618.cgb2011mybatis.pojo.Emp">
+        select * from emp where id=#{id}
+    </select>
+
 </mapper>
