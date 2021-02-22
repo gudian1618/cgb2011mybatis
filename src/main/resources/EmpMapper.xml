@@ -50,4 +50,9 @@ resultType用于指定一个类型,用该类型封装sql语句查询的结果
         delete from emp where id=#{id}
     </delete>
 
+    <!--练习8:修改员工信息:张飞 架构师 25000-->
+    <update id="update2">
+        update emp set job=#{job}, salary=#{salary} where name=#{name}
+    </update>
+
 </mapper>

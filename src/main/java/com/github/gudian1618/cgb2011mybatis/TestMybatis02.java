@@ -119,4 +119,18 @@ public class TestMybatis02 {
         System.out.println("影响行数:" + rows);
     }
 
+    /**
+     * 更新员工信息
+     */
+    @Test
+    public void testUpdate2() {
+        // 将SQL语句中的参数封装到Emp对象中
+        Emp emp = new Emp();
+        emp.setName("张飞");
+        emp.setJob("架构师");
+        emp.setSalary(25000.0);
+        int rows = session.update("EmpMapper.update2", emp);
+        System.out.println("影响的行数:" + rows);
+    }
+
 }

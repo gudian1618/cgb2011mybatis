@@ -24,6 +24,7 @@
         <!--resource属性指定mapper文件的路径,如果有多个mapper文件,可以通过多个mapper标签进行导入-->
         <!--基于类目录寻找配置文件-->
         <mapper resource="EmpMapper.xml"/>
+        <mapper resource="EmpMapper2.xml"/>
     </mappers>
 
 </configuration>
